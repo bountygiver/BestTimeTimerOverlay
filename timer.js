@@ -40,6 +40,7 @@ $(document).on('change', '#decimal-acc', function() {
   let acc = parseInt($(this).val());
   if (acc >= 0 && acc <= 3) {
     decAcc = acc;
+    renderRecordTime();
   }
 });
 
@@ -51,7 +52,7 @@ $(document).on('change', '#score-size', function() {
   }
 });
 
-$(document).ready(renderRecordTime);
+renderRecordTime();
 
 function renderBestTime(e) {
   return `<tr>
@@ -160,15 +161,17 @@ function updateDisplay() {
 }
 
 function msToTime(duration) {
-  let minutes = parseInt((duration / (1000 * 60)) % 60);
+  let minutes = parseInt((duration / (1000 * 60)) % 60),
+    seconds = (duration % 60000) / 1000;
 
   minutes = (minutes < 10) ? "0" + minutes : minutes;
-  let secondsAndMiliseconds = ((duration % 60000) / 1000).toLocaleString(
+  let secondsAndMiliseconds = seconds.toLocaleString(
     undefined,
     {
       minimumFractionDigits: decAcc,
       maximumFractionDigits: decAcc
     });
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-  return minutes + ":" + secondsAndMiliseconds;
+  return minutes + ":" + seconds;
 }
