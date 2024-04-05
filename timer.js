@@ -171,7 +171,7 @@ function msToTime(duration) {
       minimumFractionDigits: decAcc,
       maximumFractionDigits: decAcc
     });
-  seconds = (seconds < 10) ? "0" + seconds : seconds;
+  secondsAndMiliseconds = (seconds < 10) ? "0" + secondsAndMiliseconds : secondsAndMiliseconds;
 
-  return minutes + ":" + seconds;
+  return minutes + ":" + secondsAndMiliseconds;
 }
