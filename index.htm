@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="robots" content="noindex">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Best Time Overlay</title>
+    <meta name="description" content="Overlay for tracking count up best time">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="timer.js"></script>
+  </head>
+
+  <body>
+    <div class="d-flex flex-column align-items-center justify-content-center col-md-12 mb-md-0 mb-3 py-3">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td colspan="2" class="fw-bold">Best</td>
+          </tr>
+          <tr>
+            <td>Rank</td>
+            <td class="ms-2 text-end">Time</td>
+          </tr>
+        </thead>
+        <tbody id="best-times">
+
+        </tbody>
+      </table>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td colspan="2" class="fw-bold">Recent</td>
+          </tr>
+          <tr>
+            <td>Rank</td>
+            <td class="ms-2 text-end">Time</td>
+          </tr>
+        </thead>
+        <tbody id="last-times">
+
+        </tbody>
+      </table>
+      <div class="my-5 gap-1 d-flex flex-column align-items-center justify-content-center">
+        <h2 id="timer">
+          <span class="value">00:00.00</span>
+        </h2>​
+        <div class="btn-group">
+          <button class="btn btn-success" data-action="start"><i class="bi bi-play-fill"></i> Start</button>
+          <button class="btn btn-secondary" data-action="pause" disabled><i class="bi bi-pause-fill"></i> Pause</button>
+          <button class="btn btn-danger" data-action="reset" disabled><i class="bi bi-stop-fill"></i> Reset</button>
+          <button class="btn btn-primary" data-action="lap"><i class="bi bi-arrow-clockwise"></i> Record Best Time & Reset</button>
+        </div>
+        <div>
+          <input type="checkbox" id="continue-timer" />
+          <label for="continue-timer">Continue Timer after Recording Time</label>
+        </div>
+        <div>
+          <input type="number" id="decimal-acc" value="2" min=0 max=3 />
+          <label for="decimal-acc">Decimal Accuraccy</label>
+        </div>
+        <div>
+          <input type="number" id="score-size" value="5" min=0 />
+          <label for="score-size">Scoreboard Size</label>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
