@@ -18,8 +18,6 @@ $(document).on("keydown", function(e) {
       recordTime();
       break;
   }
-
-  renderRecordTime();
 });
 
 $(document).on('click', '[data-action="start"]', function() {
@@ -52,6 +50,8 @@ $(document).on('change', '#score-size', function() {
     renderRecordTime();
   }
 });
+
+$(document).ready(renderRecordTime);
 
 function renderBestTime(e) {
   return `<tr>
