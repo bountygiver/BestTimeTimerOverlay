@@ -18,6 +18,8 @@ $(document).on("keydown", function(e) {
       recordTime();
       break;
   }
+
+  renderRecordTime();
 });
 
 $(document).on('click', '[data-action="start"]', function() {
@@ -45,7 +47,7 @@ $(document).on('change', '#decimal-acc', function() {
 
 $(document).on('change', '#score-size', function() {
   let acc = parseInt($(this).val());
-  if (acc >= 0 && acc <= 3) {
+  if (acc >= 0) {
     scoreSize = acc;
     renderRecordTime();
   }
@@ -67,12 +69,19 @@ function renderRecordTime() {
               <td>${i + 1}</div>
               <td class="text-end">${msToTime(v)}</div>
             </tr>`)));
+  while(bestTimeList.children().length < scoreSize) {
+      bestTimeList.append(`<tr></tr>`);
+  }
 
   lastTimeList.empty();
   lastTimes.forEach((v, i) => lastTimeList.append($(`<tr>
               <td>${i + 1}</div>
               <td class="text-end">${msToTime(v)}</div>
             </tr>`)));
+  
+  while(lastTimeList.children().length < scoreSize) {
+      lastTimeList.append(`<tr></tr>`);
+  }
 }
 
 function recordTime() {
