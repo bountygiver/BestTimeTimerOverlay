@@ -6,3 +6,7 @@ body {
 table {
   max-width: 600px;
 }
+
+#timer {
+  width: 100%;
+}
