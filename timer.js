@@ -7,6 +7,30 @@ let lastTimes = [];
 let decAcc = 2;
 let scoreSize = 5;
 
+function renderRecordTime() {
+  let bestTimeList = $('#best-times'),
+    lastTimeList = $('#last-times');
+
+  bestTimeList.empty();
+  bestTimes.forEach((v, i) => bestTimeList.append($(`<tr>
+              <td>${i + 1}</div>
+              <td class="text-end">${msToTime(v)}</div>
+            </tr>`)));
+  while(bestTimeList.children().length < scoreSize) {
+      bestTimeList.append($(`<tr><td colspan='2' class='text-center'>---</td></tr>`));
+  }
+
+  lastTimeList.empty();
+  lastTimes.forEach((v, i) => lastTimeList.append($(`<tr>
+              <td>${i + 1}</div>
+              <td class="text-end">${msToTime(v)}</div>
+            </tr>`)));
+  
+  while(lastTimeList.children().length < scoreSize) {
+      lastTimeList.append($(`<tr><td colspan='2' class='text-center'>---</td></tr>`));
+  }
+}
+
 $(document).on("keydown", function(e) {
   switch (e.keyCode) {
     case 32:
@@ -59,30 +83,6 @@ function renderBestTime(e) {
               <td>X</div>
               <td>${msToTime(e)}</div>
             </tr>`
-}
-
-function renderRecordTime() {
-  let bestTimeList = $('#best-times'),
-    lastTimeList = $('#last-times');
-
-  bestTimeList.empty();
-  bestTimes.forEach((v, i) => bestTimeList.append($(`<tr>
-              <td>${i + 1}</div>
-              <td class="text-end">${msToTime(v)}</div>
-            </tr>`)));
-  while(bestTimeList.children().length < scoreSize) {
-      bestTimeList.append($(`<tr><td colspan='2' class='text-center'>---</td></tr>`));
-  }
-
-  lastTimeList.empty();
-  lastTimes.forEach((v, i) => lastTimeList.append($(`<tr>
-              <td>${i + 1}</div>
-              <td class="text-end">${msToTime(v)}</div>
-            </tr>`)));
-  
-  while(lastTimeList.children().length < scoreSize) {
-      lastTimeList.append($(`<tr><td colspan='2' class='text-center'>---</td></tr>`));
-  }
 }
 
 function recordTime() {
