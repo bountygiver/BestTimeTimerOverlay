@@ -70,7 +70,7 @@ function renderRecordTime() {
               <td class="text-end">${msToTime(v)}</div>
             </tr>`)));
   while(bestTimeList.children().length < scoreSize) {
-      bestTimeList.append($(`<tr></tr>`));
+      bestTimeList.append($(`<tr><td colspan=2 class='text-center'>---</td></tr>`));
   }
 
   lastTimeList.empty();
@@ -80,7 +80,7 @@ function renderRecordTime() {
             </tr>`)));
   
   while(lastTimeList.children().length < scoreSize) {
-      lastTimeList.append($(`<tr></tr>`));
+      lastTimeList.append($(`<tr><td colspan=2 class='text-center'>---</td></tr>`));
   }
 }
 
