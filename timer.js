@@ -1,7 +1,6 @@
 let interval = null;
 let startTime = null;
 let endTime = null;
-let times = 0;
 let timesHistory = [];
 let decAcc = 2;
 let scoreSize = 5;
@@ -11,7 +10,8 @@ function renderRecordTime() {
     lastTimeList = $('#last-times');
 
   bestTimeList.empty();
-  timesHistory.sort((a, b) => b - a).slice(0, scoreSize).forEach((v, i) => bestTimeList.append($(`<tr>
+  let bestTimes = timesHistory.slice().sort((a, b) => b - a).slice(0, scoreSize)
+  bestTimes.forEach((v, i) => bestTimeList.append($(`<tr>
               <td>${i + 1}</div>
               <td class="text-end">${msToTime(v)}</div>
             </tr>`)));
