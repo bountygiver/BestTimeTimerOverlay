@@ -2,8 +2,7 @@ let interval = null;
 let startTime = null;
 let endTime = null;
 let times = 0;
-let bestTimes = [];
-let lastTimes = [];
+let timesHistory = [];
 let decAcc = 2;
 let scoreSize = 5;
 
@@ -12,7 +11,7 @@ function renderRecordTime() {
     lastTimeList = $('#last-times');
 
   bestTimeList.empty();
-  bestTimes.forEach((v, i) => bestTimeList.append($(`<tr>
+  timesHistory.sort((a, b) => b - a).slice(0, scoreSize).forEach((v, i) => bestTimeList.append($(`<tr>
               <td>${i + 1}</div>
               <td class="text-end">${msToTime(v)}</div>
             </tr>`)));
@@ -21,7 +20,7 @@ function renderRecordTime() {
   }
 
   lastTimeList.empty();
-  lastTimes.forEach((v, i) => lastTimeList.append($(`<tr>
+  timesHistory.slice(-scoreSize).forEach((v, i) => lastTimeList.append($(`<tr>
               <td>${i + 1}</div>
               <td class="text-end">${msToTime(v)}</div>
             </tr>`)));
@@ -90,13 +89,7 @@ function recordTime() {
     return;
   }
 
-  bestTimes.push(getElapsedTime());
-  while (lastTimes.length >= scoreSize) {
-    lastTimes.shift();
-  }
-  lastTimes.push(getElapsedTime());
-
-  bestTimes = bestTimes.sort((a, b) => b - a).slice(0, scoreSize);
+  timesHistory.push(getElapsedTime());
   startTime = new Date();
 
   renderRecordTime();
